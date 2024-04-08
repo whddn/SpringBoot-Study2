@@ -37,7 +37,7 @@ public class ItemController {
 
     @GetMapping("/detail/{id}")
     String detail(@PathVariable Integer id){
-        
+
         Optional<Item> result = itemRepository.findById(1L);
         if(result.isPresent() ){
             System.out.println(result.get());
