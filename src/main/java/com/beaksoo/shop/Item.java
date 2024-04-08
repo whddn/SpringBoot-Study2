@@ -1,15 +1,19 @@
 package com.beaksoo.shop;
 
 import jakarta.persistence.*;
+import lombok.ToString;
 
 import java.util.Date;
 
 @Entity
+@ToString
 public class Item {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
     public String title;
     public Integer price;
+
+
 }
 
 @Entity

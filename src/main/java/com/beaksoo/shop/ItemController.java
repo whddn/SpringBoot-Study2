@@ -18,11 +18,10 @@ public class ItemController {
     @GetMapping("/list")
     String list(Model model){
         List<Item> result = itemRepository.findAll();
-        System.out.println(result.get(0).price);
+        model.addAttribute("items", result);
+        var a = new Item();
+        System.out.println(a);
 
-
-
-        model.addAttribute("name", "비싼 바지");
         return "list.html";
     }
 
