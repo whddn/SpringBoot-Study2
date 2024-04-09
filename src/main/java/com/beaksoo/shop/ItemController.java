@@ -2,6 +2,7 @@ package com.beaksoo.shop;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +14,9 @@ import java.util.*;
 public class ItemController {
 
     private final ItemRepository itemRepository;
+
     @GetMapping("/list")
-    String list(Model model){
+    String list(Model model) {
         List<Item> result = itemRepository.findAll();
         model.addAttribute("items", result);
 
@@ -22,31 +24,34 @@ public class ItemController {
     }
 
     @GetMapping("/write")
-    String write(){
+    String write() {
         return "write.html";
     }
 
     @PostMapping("/add")
-    String addPost(@ModelAttribute Item item){
+    String addPost(@ModelAttribute Item item) {
 
         itemRepository.save(item);
-
-
         return "redirect:/list";
     }
 
     @GetMapping("/detail/{id}")
-    String detail(@PathVariable Long id, Model model) {
+    String detail(@PathVariable Long id, Model model) throws Exception {
 
+        throw new Exception();
 
-        Optional<Item> result = itemRepository.findById(id);
-        if (result.isPresent()) {
-            model.addAttribute("data", result.get());
-            return "detail.html";
-        }else{
-            return "redirect:/list";
-        }
+//        Optional<Item> result = itemRepository.findById(id);
+//        if (result.isPresent()){
+//            model.addAttribute("data",result.get());
+//            return "detail.html";
+//        }else{
+//            return "redirect:/list";
+//        }
     }
 
+
+
 }
+
+
 
