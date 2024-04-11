@@ -18,8 +18,7 @@ public class ItemController {
 
     @GetMapping("/list")
     String list(Model model) {
-        List<Item> result = itemRepository.findAll();
-        model.addAttribute("items", result);
+        itemService.findItem(model);
 
         return "list.html";
     }
@@ -47,6 +46,21 @@ public class ItemController {
         }else{
             return "redirect:/list";
         }
+    }
+
+    @GetMapping("/edit/{id}")
+    String edit(Model model) {
+
+        Optional<Item> result = itemRepository.findById(1L);
+        if (result.isPresent()) {
+            model.addAttribute("data", result.get());
+
+            return "edit.html";
+        } else {
+
+            return "redirect:/list";
+        }
+       
     }
 
 
