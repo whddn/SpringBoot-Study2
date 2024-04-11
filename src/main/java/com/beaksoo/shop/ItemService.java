@@ -2,6 +2,9 @@ package com.beaksoo.shop;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -15,5 +18,11 @@ public class ItemService {
         item.setPrice(price);
         itemRepository.save(item);
     }
+
+    public void findItem(Model model){
+        List<Item> result = itemRepository.findAll();
+        model.addAttribute("items", result);
+    }
+
 
 }
