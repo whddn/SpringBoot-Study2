@@ -24,5 +24,13 @@ public class ItemService {
         model.addAttribute("items", result);
     }
 
+    public void editItem(String title, Integer price, Long id){
+        Item item = new Item();
+        item.setId(id);
+        item.setTitle(title);
+        item.setPrice(price);
+        itemRepository.save(item);
+    }
+
 
 }

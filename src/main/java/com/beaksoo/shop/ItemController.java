@@ -60,14 +60,10 @@ public class ItemController {
         }
     }
 
-    @PostMapping("/edit")
+    @PostMapping("/edit/{id}")
     String editItem(String title, Integer price, Long id) {
+        itemService.editItem(title, price, id);
 
-        Item item = new Item();
-        item.setId(id);
-        item.setTitle(title);
-        item.setPrice(price);
-        itemRepository.save(item);
         return "redirect:/list";
     }
 
