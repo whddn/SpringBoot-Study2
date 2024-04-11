@@ -1,13 +1,11 @@
 package com.beaksoo.shop;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -36,16 +34,16 @@ public class ItemController {
     }
 
     @GetMapping("/detail/{id}")
-    String detail(@PathVariable Long id, Model model) throws Exception {
-
+    String detail(@PathVariable Long id, Model model){
 
         Optional<Item> result = itemRepository.findById(id);
         if (result.isPresent()){
-            model.addAttribute("data",result.get());
+            model.addAttribute("data", result.get());
             return "detail.html";
-        }else{
+        }else {
             return "redirect:/list";
         }
+
     }
 
     @GetMapping("/edit/{id}")
