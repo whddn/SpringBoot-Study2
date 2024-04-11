@@ -14,6 +14,7 @@ import java.util.*;
 public class ItemController {
 
     private final ItemRepository itemRepository;
+    private final ItemService itemService;
 
     @GetMapping("/list")
     String list(Model model) {
@@ -29,24 +30,23 @@ public class ItemController {
     }
 
     @PostMapping("/add")
-    String addPost(@ModelAttribute Item item) {
+    String addPost(String title, Integer price) {
 
-        itemRepository.save(item);
+        itemService.saveItem(title, price);
         return "redirect:/list";
     }
 
     @GetMapping("/detail/{id}")
     String detail(@PathVariable Long id, Model model) throws Exception {
 
-        throw new Exception();
 
-//        Optional<Item> result = itemRepository.findById(id);
-//        if (result.isPresent()){
-//            model.addAttribute("data",result.get());
-//            return "detail.html";
-//        }else{
-//            return "redirect:/list";
-//        }
+        Optional<Item> result = itemRepository.findById(id);
+        if (result.isPresent()){
+            model.addAttribute("data",result.get());
+            return "detail.html";
+        }else{
+            return "redirect:/list";
+        }
     }
 
 
