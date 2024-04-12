@@ -1,6 +1,7 @@
 package com.beaksoo.shop.member;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.aspectj.weaver.BCException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -31,7 +32,7 @@ public class MemberController {
        var hash = passwordEncoder.encode(password);
        member.setPassword(hash);
        member.setDisplayName(displayName);
-        memberRepository.save(member);
+       memberRepository.save(member);
         return "redirect:/list";
     }
 
@@ -41,6 +42,14 @@ public class MemberController {
         System.out.println(result.get().getDisplayName());
         return "login.html";
     }
+
+    @GetMapping("/my-page")
+    public String myPage(Authentication auth){
+
+
+        return "mypage.html";
+    }
+
 
 
 }
