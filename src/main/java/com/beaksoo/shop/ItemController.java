@@ -58,11 +58,13 @@ public class ItemController {
         }
     }
 
-    @PostMapping("/edit/{id}")
+    @PostMapping("/edit")
     String editItem(String title, Integer price, Long id) {
         itemService.editItem(title, price, id);
+        if(title.length() >= 100 || price < 0){
 
-        return "redirect:/list";
+        }
+        return "redirect:/error";
     }
 
 
