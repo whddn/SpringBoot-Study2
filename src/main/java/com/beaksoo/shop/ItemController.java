@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -62,11 +63,18 @@ public class ItemController {
     String editItem(String title, Integer price, Long id) {
         itemService.editItem(title, price, id);
         if(title.length() >= 100 || price < 0){
+        return "redirect:/error";
 
         }
-        return "redirect:/error";
+        return "redirect:/list";
     }
 
+    @GetMapping("/test1")
+    String test1(@RequestParam String name, Integer age){
+        System.out.println(name);
+        System.out.println(age);
+        return "redirect:/list";
+    }
 
 
 }
