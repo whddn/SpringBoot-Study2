@@ -1,4 +1,4 @@
-package com.beaksoo.shop;
+package com.beaksoo.shop.item;
 
 import jakarta.persistence.*;
 import lombok.Getter;

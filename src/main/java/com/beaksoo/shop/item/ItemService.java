@@ -1,12 +1,12 @@
-package com.beaksoo.shop;
+package com.beaksoo.shop.item;
 
+import com.beaksoo.shop.item.Item;
+import com.beaksoo.shop.item.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

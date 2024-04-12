@@ -1,4 +1,4 @@
-package com.beaksoo.shop;
+package com.beaksoo.shop.item;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -77,12 +76,7 @@ public class ItemController {
         return ResponseEntity.status(200).body("삭제완료");
     }
 
-    @GetMapping("/test2")
-    String deleteItem(){
-        var result = new BCryptPasswordEncoder().encode("문자");
-        System.out.println(result);
-        return "redirect:/list";
-    }
+
 
 
 
