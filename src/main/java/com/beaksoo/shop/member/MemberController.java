@@ -35,5 +35,12 @@ public class MemberController {
         return "redirect:/list";
     }
 
+    @GetMapping("/login")
+    public String login(){
+        var result = memberRepository.findByUsername("kim");
+        System.out.println(result.get().getDisplayName());
+        return "login.html";
+    }
+
 
 }
