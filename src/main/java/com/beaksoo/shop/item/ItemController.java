@@ -1,6 +1,8 @@
 package com.beaksoo.shop.item;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -76,6 +78,13 @@ public class ItemController {
         return ResponseEntity.status(200).body("삭제완료");
     }
 
+    @GetMapping("/list/page/1")
+    String getListPage(Model model) {
+
+        Page<Item> result = itemRepository.findPageBy(PageRequest.of(0,5));
+        model.addAttribute("items", result);
+        return "list.html";
+    }
 
 
 
