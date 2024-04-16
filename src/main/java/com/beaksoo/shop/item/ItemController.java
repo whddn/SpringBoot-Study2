@@ -78,10 +78,12 @@ public class ItemController {
         return ResponseEntity.status(200).body("삭제완료");
     }
 
-    @GetMapping("/list/page/1")
-    String getListPage(Model model) {
+    @GetMapping("/list/page/{abc}")
+    String getListPage(Model model, @PathVariable Integer abc) {
 
-        Page<Item> result = itemRepository.findPageBy(PageRequest.of(0,5));
+        Page<Item> result = itemRepository.findPageBy(PageRequest.of(abc-1,5));
+        result.getTotalPages();
+        System.out.println(result.getTotalPages());
         model.addAttribute("items", result);
         return "list.html";
     }

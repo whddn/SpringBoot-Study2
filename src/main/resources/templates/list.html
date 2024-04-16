@@ -33,7 +33,13 @@
     </div>
 
 
-    <button class="btn">버튼</button>
+       <a th="href=@{ '/list/page/{abc}' + ${i.id}">
+            <button class="btn">Previous Page</button>
+        </a>
+        <a th="href=@{ '/list/page/{abc}' + ${i.id}">
+            <button class="btn">Next Page</button>
+        </a>
+
 
 <script>
 
