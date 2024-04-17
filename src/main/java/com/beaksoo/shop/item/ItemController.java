@@ -101,7 +101,14 @@ public class ItemController {
         return result;
     }
 
+    @GetMapping ("/search")
+    String postSearch(@RequestParam String searchText){
 
+        var result = itemRepository.rawQuery1(searchText);
+        System.out.println(result);
+
+        return "list.html";
+    }
 
 
 

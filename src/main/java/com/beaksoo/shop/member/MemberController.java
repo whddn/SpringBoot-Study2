@@ -42,7 +42,7 @@ public class MemberController {
 
     @GetMapping("/login")
     public String login() {
-        var result = memberRepository.findByUsername("kim");
+        var result = memberRepository.findByUsername(getUser().username);
         System.out.println(result.get().getDisplayName());
         return "login.html";
     }
