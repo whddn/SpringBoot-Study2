@@ -1,5 +1,6 @@
 package com.beaksoo.shop.item;
 
+import com.beaksoo.shop.comment.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -41,6 +42,8 @@ public class ItemController {
 
     @GetMapping("/detail/{id}")
     String detail(@PathVariable Long id, Model model){
+
+        CommentRepository.findAllByParentId(1L);
 
         Optional<Item> result = itemRepository.findById(id);
         if (result.isPresent()){
